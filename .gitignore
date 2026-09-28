@@ -1,0 +1,59 @@
+# Build output. Everything the compiler and the shade plugin produce.
+target/
+
+# VVCS's own repository data, wherever one has been created.
+#
+# This project *is* a version control system, so its storage directories are working data
+# rather than source. They are also content-addressed and machine-local: a .vvcs directory
+# copied between machines carries absolute paths from the machine that made it.
+.vvcs/
+
+# The sample project's media.
+#
+# 201MB of .mp4 that the code never reads. The parser takes the file path from the
+# "resource" property in the .kdenlive XML as a string and records it as an asset; it never
+# opens the media itself, so parsing, the diff engine, the API and the viewer all work
+# without these files. They are also third-party footage whose redistribution is not ours to
+# grant, and at 99MB the largest is close enough to GitHub's 100MB per-file limit to be a
+# bad bet. sample.kdenlive is kept, so the tests and the demo still run.
+#
+# To get the media back for local Kdenlive work, fetch it separately rather than committing
+# it.
+sample-project/*.mp4
+sample-project/*.mov
+sample-project/*.wav
+
+# Eclipse. These are per-developer, and .classpath in particular names absolute paths.
+.classpath
+.project
+.settings/
+.factorypath
+
+# Node, should the frontend ever grow a build step. The frontend is plain ES modules today
+# and needs none of this; it is here so that a later change does not commit 200MB of it.
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Visual Studio Code
+.vscode/
+
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor scratch files
+*~
+*.swp
+*.swo
+.*.orig
+.*.rej
+
+# Logs
+*.log
